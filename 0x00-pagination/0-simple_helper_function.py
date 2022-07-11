@@ -3,8 +3,6 @@
 
 
 def index_range(page: int, page_size: int) -> tuple:
-    """ return a tuple of size two
-        contianing a statr and end index
-    """
+    """ return a tuple of size two containing a start and end index"""
     pg = page * page_size
     return (pg - page_size, page * page_size)
