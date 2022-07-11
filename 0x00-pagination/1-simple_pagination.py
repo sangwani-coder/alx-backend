@@ -1,6 +1,15 @@
+#!/usr/bin/env python3
+""" implements class server"""
+
 import csv
 import math
 from typing import List
+
+def index_range(page: int, page_size: int) -> tuple:
+    """ returns a tuple of size 2 containing a start and end index"""
+    pg = page * page_size
+    return (pg - page_size, page * page_size)
+
 
 
 class Server:
