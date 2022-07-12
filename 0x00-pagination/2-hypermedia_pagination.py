@@ -52,28 +52,3 @@ class Server:
                 "prev_page": page - 1,
                 "total_pages": len(self.__dataset)
                 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
