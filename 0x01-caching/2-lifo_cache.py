@@ -29,7 +29,7 @@ class LIFOCache(BaseCaching):
 
     def get(self, key):
         """ return value from self.cache_data linked to key"""
-        if key is None or key not in self.cache_date:
+        if key is None or key not in self.cache_data:
             return None
         return self.cache_data[key]
 
