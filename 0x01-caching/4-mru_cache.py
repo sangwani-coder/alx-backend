@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""LRU Caching"""
+"""MRU Caching"""
 from base_caching import BaseCaching
 
 
-class LRUCache(BaseCaching):
-    """ Least Recently Used Caching system"""
+class MRUCache(BaseCaching):
+    """ Most Recently Used Caching system"""
     def __init__(self):
         """" constructor"""
         super().__init__()
@@ -18,7 +18,7 @@ class LRUCache(BaseCaching):
         self.cache_data[key] = item
 
         if len(self.cache_data) > self.MAX_ITEMS:
-            discard = self.stack.pop(0)
+            discard = self.stack.pop()
             del self.cache_data[discard]
             print("DISCARD: {}".format(discard))
 
