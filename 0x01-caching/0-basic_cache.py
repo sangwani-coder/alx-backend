@@ -4,7 +4,9 @@ from base_caching import BaseCaching
 
 
 class BasicCache(BaseCaching):
-    """ BaseCaching implements a caching system"""
+    """ BaseCaching implements a caching system
+        implements the put and get method defined in the Base class
+    """
     def put(self, key, item):
         """ assigns value for the key to a dictionary self.cache_data"""
         if key is not None or item is not None:
