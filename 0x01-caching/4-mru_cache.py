@@ -4,7 +4,7 @@ from base_caching import BaseCaching
 
 
 class MRUCache(BaseCaching):
-    """ Most Recently Used Caching system"""
+    """ LIFO """
     def __init__(self):
         """" constructor"""
         super().__init__()
