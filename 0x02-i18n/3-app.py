@@ -6,7 +6,7 @@ from flask import (
         request
         )
 from flask_babel import Babel
-
+from os import getenv
 
 app = Flask(__name__)
 babel = Babel(app)
@@ -30,7 +30,7 @@ def index() -> str:
     """ GET
     return: 1-index.html
     """
-    return render_template('2-index.html')
+    return render_template('3-index.html')
 
 
 @babel.localeselector
