@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" instatiates a Bael object"""
+""" instatiates a Babel object"""
 from flask import (
         Flask,
         render_template,

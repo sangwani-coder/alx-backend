@@ -1,14 +1,11 @@
 #!/usr/bin/env python3
 """ instatiates a Bael object"""
-from flask import (
-        Flask, g,
-        render_template,
-        request
-        )
+from flask import Flask, g, render_template, request
 from flask_babel import Babel
 from os import getenv
 from typing import Union
 from pytz import timezone
+from datetime import datetime
 import pytz.exceptions
 
 users = {
@@ -32,16 +29,15 @@ class Config(object):
     BABEL_DAFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
-
-app.config.from_object('7-app.Config')
+app.config.from_object('app.Config')
 
 
 @app.route('/', methods=['GET'], strict_slashes=False)
 def index() -> str:
     """ GET
-    return: 7-index.html
+    return: index.html
     """
-    return render_template('7-index.html')
+    return render_template('index.html')
 
 
 @babel.localeselector
@@ -62,26 +58,9 @@ def get_locale() -> str:
     else:
         return request.accept_languages.best_match(app.config['LANGUAGES'])
 
-
-def get_user() -> Union[dict, None]:
-    """ Returns user dict if ID can be found else returns None """
-    if request.args.get('login_as'):
-        # type cast  the param to int to be able to search the user dict
-        user = int(request.args.get('login_as'))
-        if user in users:
-            return users.get(user)
-    else:
-        return None
-
-
-@app.before_request
-def before_request():
-    """ Finds user if any and sets as global on flask.g.user """
-    g.user = get_user()
-
-
 @babel.timezoneselector
-def get_timezone():
+def get_timezone() -> str:
+    print("getting timezone")
     """ infer appropriate time zone"""
     # check if there is a timezone query string
     if request.args['timezone']:
@@ -100,6 +79,23 @@ def get_timezone():
     else:
         return request.accept_languages.best_match(app.config['LANGUAGES'])
 
+
+def get_user() -> Union[dict, None]:
+    """ Returns user dict if ID can be found else returns None """
+    if request.args.get('login_as'):
+        # type cast  the param to int to be able to search the user dict
+        user = int(request.args.get('login_as'))
+        if user in users:
+            return users.get(user)
+    else:
+        return None
+
+
+@app.before_request
+def before_request():
+    """ Finds user if any and sets as global on flask.g.user """
+    g.user = get_user()
+    
 
 if __name__ == "__main__":
     app.run()
