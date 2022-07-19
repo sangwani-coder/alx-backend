@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """ instatiates a Bael object"""
-from  flask import Flask, render_template
+from flask import Flask, render_template
 from flask_babel import Babel
 
 
@@ -14,8 +14,9 @@ class Config(object):
     LANGUAGES = ["en", "fr"]
 
     # Defaults language and timezone
-    BABEL_DAFAULT_LOCALE ="en"
+    BABEL_DAFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
+
 
 app.config.from_object('1-app.Config')
 
