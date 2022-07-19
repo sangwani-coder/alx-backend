@@ -24,7 +24,6 @@ class Config(object):
     """ babel configuration sets default
     """
     LANGUAGES = ["en", "fr"]
-
     # Defaults language and timezone
     BABEL_DAFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
